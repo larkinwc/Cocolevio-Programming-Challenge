@@ -2,8 +2,16 @@
 // assuming that input data is given in CSV, or other applicable format
 function loadData(string filename){
     // open input file, in read mode if aplicable
-    file file_in = open('filename', 'r')
-
+    file file_in = open(filename, 'r')
+    
+    // create list/array to store lists/arrays that will be generated from the CSV input.
+    // this array might need to be declared differently depending on lang
+    string[] data = {}
+    for line in file_in {
+        data.append(line.split(',')) // additional cleaning can be done to the input if unclean data is expected
+    }
+    
+    // return multidemensional array
     return data
 }
 
