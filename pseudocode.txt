@@ -1,9 +1,9 @@
 
 // assuming that input data is given in CSV, or other applicable format
 function loadData(string filename){
-    // open input file, in read file if aplicable
+    // open input file, in read mode if aplicable
     file file_in = open('filename', 'r')
-    
+
     return data
 }
 
