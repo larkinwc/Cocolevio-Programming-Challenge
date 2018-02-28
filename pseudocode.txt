@@ -1,6 +1,6 @@
 
 // assuming that input data is given in CSV, or other applicable format
-function loadData(string filename){
+function loadData(string filename) {
     // open input file, in read mode if aplicable
     file file_in = open(filename, 'r')
     
@@ -10,7 +10,7 @@ function loadData(string filename){
     for line in file_in {
         data.append(line.split(',')) // additional cleaning can be done to the input if unclean data is expected
     }
-    
+
     // return multidemensional array
     return data
 }
@@ -18,5 +18,23 @@ function loadData(string filename){
 // this function will call loadData, and then use a greedy algo to find who to sell the product to
 function computeData() {
 
+    // input supply quantity
+    int supply = input("Please input supply quantity: ")
+
+    // load CSV named input
+    string[][] inputData = loadData("input.csv")  //based off of same input, we will assume that the indicies are as follows: 0 is company name, 1 is quantity, and 2 is price
+    string[] results = {}
+    
+   
+    while supply > 0 { // assuming that we can fufill part of a business's requirments
+        // get the highest price, then subtract it from our supply, and put the results into the list.
+        highPrice = inputData[2].max() 
+        supply -= inputData[2][highPrice]
+        results[0].append(inputData[0].pop(highPrice))
+        results[1].append(inputData[1].pop(highPrice))
+        results[2].append(inputData[2].pop(highPrice))
+    }
+    
+    //print out results, could also be written back to a CSV
     print(result)
 }
