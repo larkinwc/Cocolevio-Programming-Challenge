@@ -1,0 +1,14 @@
+
+// assuming that input data is given in CSV, or other applicable format
+function loadData(string filename){
+    // open input file, in read file if aplicable
+    file file_in = open('filename', 'r')
+    
+    return data
+}
+
+// this function will call loadData, and then use a greedy algo to find who to sell the product to
+function computeData() {
+
+    print(result)
+}
