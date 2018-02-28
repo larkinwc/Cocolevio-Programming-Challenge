@@ -9,7 +9,8 @@ def loadData(filename):
     #convert our string values to int, besides first row
     for i in range(1, len(data)):    
         data[i] = list(map(int, data[i]))
-
+        
+    file_in.close()
     return data
 
 #use this to determine who to sell to
@@ -31,13 +32,25 @@ def computeData(supply):
         results[0].append(data[0].pop(highPrice))
         results[1].append(data[1].pop(highPrice))
         results[2].append(data[2].pop(highPrice))
-        
+    
+    #incase the last business can only take a portion of what we have
+    results[1][-1] = results[1][-1] + supply
     return results
 
 def main():
-    
-    supply = int(input("Please input supply quantity: "))
 
-    print(result)
+    supply = int(input("Please input supply quantity: "))
+    print()
+
+    result = computeData(supply)
+    if(result):
+        sum = 0
+        for i in range(len(result[2])):
+            print("We can sell %i objects to company %s at $%i each for a total of $%i" %(result[1][i], result[0][i], result[2][i], result[1][i] * result[2][i]))
+            sum += result[1][i] * result[2][i]
+        print()
+        print("Overall we made $%i" % (sum))
+    else:
+        print("We can sell to everyone!, because we have more than enough supply")
 
 main()
