@@ -9,7 +9,7 @@ def loadData(filename):
     #convert our string values to int, besides first row
     for i in range(1, len(data)):    
         data[i] = list(map(int, data[i]))
-        
+
     file_in.close()
     return data
 
